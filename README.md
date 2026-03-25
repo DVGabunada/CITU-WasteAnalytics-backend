@@ -12,7 +12,7 @@
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/your-repo.git
+git clone https://github.com/DVGabunada/CITU-WasteAnalytics-backend
 cd your-repo
 ```
 
@@ -24,31 +24,10 @@ cd your-repo
 1. Open the project in IntelliJ.
 2. Right-click `pom.xml` → **Maven** → **Reload Project**
    *(or click the **Maven** panel → refresh icon)*
-
-### CLI
-```bash
-mvn dependency:resolve
-# or force update snapshots/releases
-mvn clean install -U
-```
-
+   
 ---
 
 ## 3. Run the Application
-
-### Via IDE
-Run the main class annotated with `@SpringBootApplication` (or equivalent entry point).
-
-### Via Maven
-```bash
-mvn spring-boot:run
-```
-
-### Via JAR
-```bash
-mvn clean package
-java -jar target/your-app.jar
-```
 
 The application starts on `http://localhost:8080` by default.
 
@@ -60,10 +39,9 @@ The application starts on `http://localhost:8080` by default.
 2. Click **Import** (top-left).
 3. Select the collection file:
    ```
-   postman/your-collection.json
+   Waste Analytics.postman_collection.json
    ```
 4. Click **Import**.
-5. Set the required environment variables (e.g., `base_url`, `token`) in your Postman environment if applicable.
 
 ---
 
