@@ -27,7 +27,6 @@ public class Helper {
         User user = new User();
         user.setUsername((String) data.get("username"));
         user.setPassword((String) data.get("password"));
-        user.setAdmin((boolean) data.get("admin"));
 
         return user;
     }
