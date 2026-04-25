@@ -17,10 +17,10 @@ public class FirebaseConfig {
     @Bean
     public FirebaseApp firebaseApp() throws IOException {
         InputStream serviceAccount = getClass().getClassLoader()
-                .getResourceAsStream("wasteanalytics-7f34e-firebase-adminsdk-fbsvc-0bba23c880.json");
+                .getResourceAsStream("firebase-service-account.json");
 
         if (serviceAccount == null) {
-            throw new FileNotFoundException("firebase-service-account.json not found in resources folder");
+            throw new IOException("firebase-service-account.json not found in resources folder");
         }
 
         FirebaseOptions options = FirebaseOptions.builder()
