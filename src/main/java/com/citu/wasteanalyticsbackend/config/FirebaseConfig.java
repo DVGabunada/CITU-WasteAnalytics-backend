@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
-import java.io.FileNotFoundException;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -16,12 +16,13 @@ public class FirebaseConfig {
 
     @Bean
     public FirebaseApp firebaseApp() throws IOException {
-        InputStream serviceAccount = getClass().getClassLoader()
-                .getResourceAsStream("wasteanalytics-7f34e-firebase-adminsdk-fbsvc-0bba23c880.json");
+        String firebaseConfig = System.getenv("FIREBASE_CONFIG");
 
-        if (serviceAccount == null) {
-            throw new FileNotFoundException("firebase-service-account.json not found in resources folder");
+        if (firebaseConfig == null || firebaseConfig.isEmpty()) {
+            throw new IllegalStateException("FIREBASE_CONFIG environment variable is not set");
         }
+
+        InputStream serviceAccount = new ByteArrayInputStream(firebaseConfig.getBytes());
 
         FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
